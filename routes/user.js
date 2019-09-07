@@ -2,6 +2,15 @@ const express=require("express");
 const User = require("../models/User");
 const router = express.Router();
 
+// router.put("/updateUser",(req,res)=>{
+//  const user = req.body;
+//  const newUser = new User(user);
+//  newUser.update().then(()=>{
+//      res.send({message:"user updated"});
+//  })
+
+// })
+
 router.post("/addUser",(req,res)=>{
     const user=req.body;
     const newUser = new User(user);
@@ -15,7 +24,7 @@ router.post("/addUser",(req,res)=>{
 
 router.post("/getUser",(req,res)=>{
     const name = req.body.name;
-    const user = User.find(name)
+    const user = User.find({name})
     user.then((user)=>{
         res.send({result:user})
     })
@@ -24,7 +33,7 @@ router.post("/getUser",(req,res)=>{
     })
 })
 
-router.get("getAll",(req,res)=>{
+router.get("/getAll",(req,res)=>{
     const users = User.find();
     users.then((users)=>{
         res.send({result:users});

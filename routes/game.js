@@ -5,7 +5,7 @@ const Game = require("../models/Game");
 
 router.get("/:level",(req,res)=>{
     const level = req.params.level;
-     Game.find(level)
+     Game.find({level})
     .then((questions)=>{
         res.send({result:questions});
     })
