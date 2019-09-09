@@ -11,9 +11,11 @@ const router = express.Router();
 
 // })
 router.post("/updateUser",(req,res)=>{
-    const  data = req.body;
-    console.log(data,"data")
-    User.findByIdAndUpdate(data.id,data)
+    const id =req.body.id
+    const  score = req.body.score;
+    console.log(score,"score")
+    User.update({_id:id},{$push:{score:score}})
+    // User.findByIdAndUpdate(data.id,data)
     .then(()=>{
         res.send({message:"user updated"});
     })

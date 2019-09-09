@@ -7,11 +7,13 @@ const UserSchema = new Schema({
         type:String,
         unique:true
     },
-    score:[{
+    score:[
+        {
             val:Number,
             level:String,
             time:Number
-        }]
+        }
+    ]
 })
 
 const User = mongoose.model("Users",UserSchema);
