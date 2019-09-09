@@ -10,7 +10,17 @@ const router = express.Router();
 //  })
 
 // })
-
+router.post("/updateUser",(req,res)=>{
+    const  data = req.body;
+    console.log(data,"data")
+    User.findByIdAndUpdate(data.id,data)
+    .then(()=>{
+        res.send({message:"user updated"});
+    })
+    .catch((e)=>{
+        res.send({message:e.message})
+    })
+})
 router.post("/addUser",(req,res)=>{
     const user=req.body;
     const newUser = new User(user);
@@ -20,6 +30,9 @@ router.post("/addUser",(req,res)=>{
     .catch((e)=>{
         res.send({message:e.message})
     })
+})
+router.post("login",(req,res)=>{
+    
 })
 
 router.post("/getUser",(req,res)=>{

@@ -7,7 +7,7 @@ const UserSchema = new Schema({
         type:String,
         unique:true
     },
-    score:Number
+    score:Array
 })
 
 const User = mongoose.model("Users",UserSchema);
