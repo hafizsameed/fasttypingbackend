@@ -48,6 +48,17 @@ router.post("/getUser",(req,res)=>{
     })
 })
 
+router.get("/getHighscores/:level",(req,res)=>{
+    const level = req.params.level;
+    User.find({$query:{'score.level':level},$orderby:{'score.val':-1}})
+    .then((data)=>{
+        res.send({result:data});
+    })
+    .catch((e)=>{
+        res.send({message:e.message})
+    })
+})
+
 router.get("/getAll",(req,res)=>{
     const users = User.find();
     users.then((users)=>{
